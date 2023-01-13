@@ -6,7 +6,6 @@ const Pet = ({ name, animal, breed, images, location, id }) => {
         hero = images[0];
     }
 
-    console.log(images[0]);
     return (
 
         <Link to={`/details/${id}`} className="pet">

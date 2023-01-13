@@ -24,10 +24,11 @@ const useBreedList = (animal) => {
                 `http://pets-v2.dev-apis.com/breeds?animal=${animal}`
             );
             const json = await res.json();
+            // console.log(json);
             localCache[animal] = json.breeds || [];
             setBreedList(localCache[animal]);
-            console.log(breedList)
-            console.log(localCache)
+            // console.log(breedList)
+            // console.log(localCache)
         }
     }, [animal])
     return [breedList]
