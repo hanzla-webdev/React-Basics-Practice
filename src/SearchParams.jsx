@@ -23,7 +23,7 @@ const SearchParams = () => {
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
     const json = await res.json();
-    console.log(json.pets[0].name);
+    // console.log(json.pets[0].name);
     
     // const test = await fetch(
     //   `https://pets-v2.dev-apis.com/pets?id=${id}`

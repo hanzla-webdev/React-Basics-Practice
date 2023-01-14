@@ -1,16 +1,15 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { useGetPetByIdQuery } from './adoptingPetSlice'
+import { petApi, useGetPetByIdQuery } from './adoptingPetSlice'
 
 const Details = () => {
   // const [pet, setPet] = useState([]);
   // const [petData, setPetData] = useState([]);
   const { id } = useParams();
-  const {data, error, isLoading} = useGetPetByIdQuery(id);
-  // const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
-
-  console.log(data)
+  const { data, error, isLoading } = useGetPetByIdQuery(id);
+  // console.log('data', data.animal)
+  // console.log(data[0])
   // useEffect(() => {
   //   console.log("data", data);
   // }, [data, error])
@@ -32,10 +31,21 @@ const Details = () => {
   // const ali = "aasdf"
 
   return (
-    <div>
-        <div>
-          <h3>{id}</h3>
-        </div>
+    <div className="details">
+      {
+        error ? (
+          <div>Oh no, there was an error</div>
+        ) : isLoading ? (
+          <div>Loading...</div>
+        ) : data ? (
+          <div>
+            <h1>{data.name}</h1>
+            <h2>{data.animal} - {data.breed} - {data.city} - {data.state}</h2>
+            <button>Adopt {data.name}</button>
+            <p>{data.description}</p>
+          </div>
+        ) : null
+      }
     </div>
   )
 }
